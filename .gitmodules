@@ -1,0 +1,8 @@
+[submodule "external/DB_tech_lab_6"]
+	path = external/DB_tech_lab_6
+	url = https://github.com/Mitlyy/DB_tech_lab_6
+	branch = main
+[submodule "external/DB_tech_lab_7"]
+	path = external/DB_tech_lab_7
+	url = https://github.com/Mitlyy/DB_tech_lab_7
+	branch = main
