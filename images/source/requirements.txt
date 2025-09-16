@@ -1,0 +1,9 @@
+fastapi==0.114.2
+uvicorn[standard]==0.30.6
+pydantic==2.9.2
+numpy==2.1.1
+pandas==2.2.3
+kafka-python==2.0.2
+aiokafka==0.10.0
+redis==5.0.8
+
