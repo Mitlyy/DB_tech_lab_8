@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lab5-model-ingress
+  namespace: bigdata-lab8
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - host: model.lab8.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service: { name: lab5-model-svc, port: { number: 80 } }
+

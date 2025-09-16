@@ -1,0 +1,32 @@
+apiVersion: sparkoperator.k8s.io/v1beta2
+kind: SparkApplication
+metadata:
+  name: lab8-batch-infer
+  namespace: bigdata-lab8
+spec:
+  type: Python
+  mode: cluster
+  sparkVersion: "3.5.1"
+  image: "docker.io/mitlyy/lab8-spark-job:1.0.1"
+  imagePullPolicy: IfNotPresent
+  mainApplicationFile: "local:///app/jobs/batch_infer.py"
+  pythonVersion: "3"
+  driver:
+    cores: 1
+    memory: "1g"
+    serviceAccount: spark
+    env:
+      - name: SPARK_APP_NAME
+        value: "lab8-batch-infer"
+      - name: OUTPUT_PATH
+        value: "/tmp/lab8_out"
+  executor:
+    cores: 1
+    instances: 2
+    memory: "1g"
+  restartPolicy:
+    type: OnFailure
+    onFailureRetries: 1
+    onFailureRetryInterval: 10
+    onSubmissionFailureRetries: 1
+    onSubmissionFailureRetryInterval: 10

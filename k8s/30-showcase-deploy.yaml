@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab7-showcase
+  namespace: bigdata-lab8
+  labels:
+    app: lab7-showcase
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lab7-showcase
+  template:
+    metadata:
+      labels:
+        app: lab7-showcase
+    spec:
+      containers:
+        - name: showcase
+          image: docker.io/mitlyy/lab7-showcase:1.0.0
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: lab8-secrets
+            - configMapRef:
+                name: lab8-config
+          ports:
+            - containerPort: 9000
+          readinessProbe:
+            httpGet: { path: /health, port: 9000 }
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: { path: /health, port: 9000 }
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
+
