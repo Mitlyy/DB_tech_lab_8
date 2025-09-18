@@ -16,7 +16,7 @@ spec:
   driver:
     serviceAccount: spark
     cores: 1
-    memory: "1g"
+    memory: "2g"
     labels:
       app: lab8-pyspark-job
     env:
@@ -26,8 +26,8 @@ spec:
         value: "/tmp/lab8_out"
   executor:
     cores: 1
-    instances: 3
-    memory: "2g"
+    instances: 2
+    memory: "1g"
   restartPolicy:
     type: OnFailure
     onFailureRetries: 2

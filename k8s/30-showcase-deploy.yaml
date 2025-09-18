@@ -15,6 +15,7 @@ spec:
       labels:
         app: lab7-showcase
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
         - name: showcase
           image: docker.io/mitlyy/lab7-showcase:1.0.0

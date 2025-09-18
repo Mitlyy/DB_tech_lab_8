@@ -15,6 +15,7 @@ spec:
       labels:
         app: lab5-model
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
         - name: model
           image: docker.io/mitlyy/lab5-model:1.0.0
@@ -27,11 +28,16 @@ spec:
           ports:
             - containerPort: 8000
           readinessProbe:
-            httpGet: { path: /health, port: 8000 }
+            httpGet:
+              path: /health
+              port: 8000
             initialDelaySeconds: 5
             periodSeconds: 5
+
           livenessProbe:
-            httpGet: { path: /health, port: 8000 }
+            httpGet:
+              path: /health
+              port: 8000
             initialDelaySeconds: 15
             periodSeconds: 10
           resources:

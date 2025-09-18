@@ -15,6 +15,7 @@ spec:
       labels:
         app: lab6-source
     spec:
+      terminationGracePeriodSeconds: 5
       containers:
         - name: source
           image: docker.io/mitlyy/lab6-source:1.0.0
